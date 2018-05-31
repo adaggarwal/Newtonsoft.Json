@@ -6,6 +6,8 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>James Newton-King</Authors>
     <TargetFrameworks>net45;net40;net35;net20;portable45-net45+win8+wp8+wpa81;portable40-net40+sl5+win8+wp8+wpa81;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(DotnetOnly)' == 'true'">netstandard1.0</TargetFrameworks>
+    <Version>9.0.1</Version>
     <AssemblyName>Newtonsoft.Json</AssemblyName>
     <PackageId>Newtonsoft.Json</PackageId>
     <PackageTags>json</PackageTags>
@@ -106,7 +108,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD10</DefineConstants>
+    <DefineConstants>$(DefineConstants);PORTABLE;NETSTANDARD10;$(AdditionalConstants)</DefineConstants>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
